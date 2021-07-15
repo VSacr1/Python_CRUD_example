@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+{% block body_content%}
+    <div> 
+        <h3>Character list</h3>
+        {% for character in characters %}
+
+            <p>Character Name: {{character.characterName}}</p>
+            <p>Character Race: {{character.characterRace}}</p>
+            <p>Character Class: {{character.characterClass}}</p>
+            
+            <form action='{{ url_for('updatecharacter', character_id=character.character_id) }}'>
+                <input type=submit value="Update">
+            </form>
+            <form action='{{ url_for('deletecharacter', character_id=character.character_id) }}'>
+                <input type=submit value="Delete">
+            </form>
+            <br> 
+
+        {% endfor %}
+    </div>
+{% endblock body_content%}

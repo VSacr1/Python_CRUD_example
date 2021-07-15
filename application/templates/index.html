@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+{% block body_content%}
+    <div> 
+        <h3>Game list</h3>
+        {% for game in games %}
+
+            <p>Game Name: {{game.gameName}}</p>
+            <p>Game Description: {{game.gameDescription}}</p>
+            <p>Game Book: {{game.gameBook}}</p>
+
+            {% if game.gameCompleted == True %}
+                &#9989
+                <form action = '{{ url_for('complete', game_id=game.game_id) }}'>
+                    <input type = submit value="incompleted">
+                </form>
+            {% endif %}
+
+            <form action='{{ url_for('update', game_id=game.game_id) }}'>
+                <input type=submit value="Update">
+            </form>
+
+            <form action='{{ url_for('delete', game_id=game.game_id) }}'>
+                <input type=submit value="Delete">
+            </form>
+
+            {% for character in characters %}
+        
+            <form action='{{ url_for('addcharacter', character_id=character.character_id) }}'>
+                <input type=submit value="AddCharacter">
+            </form>
+            {% endfor %}
+           
+        {% endfor %}
+        
+    </div>
+{% endblock body_content%}

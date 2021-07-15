@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+{% block body_content %}
+    <form action='' method='POST'>
+        {{ form.hidden_tag() }}
+        <p> Game Name: {{ form.gameName }}</p>
+        <p> Game Description: {{ form.gameDescription }}</p>
+        <p> Game Book: {{ form.gameBook }}</p>
+
+        {% if form.gameName.errors %}
+            {% for error in form.gameName.errors %}
+                {{ error }}<br>
+            {% endfor %}
+        {% endif %}
+
+        {% if form.gameDescription.errors %}
+            {% for error in form.gameDescription.errors %}
+                {{ error }}<br>
+            {% endfor %}
+        {% endif %}
+
+        {% if form.gameBook.errors %}
+            {% for error in form.gameBook.errors %}
+                {{ error }}<br>
+            {% endfor %}
+        {% endif %}
+
+        {{ form.submit }}
+    </form>
+{% endblock body_content %}

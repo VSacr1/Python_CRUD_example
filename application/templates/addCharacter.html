@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+{% block body_content %}
+    <form action='' method='POST'>
+        {{ form.hidden_tag() }}
+        <p> character Name: {{ form.characterName }}</p>
+        <p> character Race: {{ form.characterRace }}</p>
+        <p> character Class: {{ form.characterClass }}</p>
+
+        {% if form.characterName.errors %}
+            {% for error in form.characterName.errors %}
+                {{ error }}<br>
+            {% endfor %}
+        {% endif %}
+
+        {% if form.characterRace.errors %}
+            {% for error in form.characterRace.errors %}
+                {{ error }}<br>
+            {% endfor %}
+        {% endif %}
+
+        {% if form.characterClass.errors %}
+            {% for error in form.characterClass.errors %}
+                {{ error }}<br>
+            {% endfor %}
+        {% endif %}
+
+        {{ form.submit }}
+    </form>
+{% endblock body_content %}
